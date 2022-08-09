@@ -13,6 +13,10 @@ channel id(8 bytes) + body length(4 bytes) + body(x bytes)
 1. springboot
 2. netty
 
+## 环境
+
+1. jdk8+
+
 ## 使用
 
 ### server端
@@ -44,16 +48,16 @@ client端一般在windows平台使用，有两个协议实现
 client模块打包后，启动命令 比如：
 
 ```shell
-java -cp client.jar com.proxy.TcpClient localhost 8081 www.baidu.com 80 8082 debug
+java -cp client.jar com.proxy.TcpClient www.baidu.com 80 localhost 8081 8082 debug
 ```
 
 启动后，标准输出也会打印使用参数： usage:
-mainClass [serverHost] [serverPort] [proxyHost] [proxyPort] [listenPort-default:8082] [logLevel-default:info]
+mainClass [proxyHost] [proxyPort] [serverHost] [serverPort] [listenPort-default:8082] [logLevel-default:info]
 
-1. serverHost 是代理server的host
-2. serverPort是代理server监听端口
-3. proxyHost是代理的目标服务的host 比如www.baidu.com
-4. proxyPort是代理的目标服务的端口 比如80
+1. proxyHost是代理的目标服务的host 比如www.baidu.com
+2. proxyPort是代理的目标服务的端口 比如80
+3. serverHost 是代理server的host
+4. serverPort是代理server监听端口
 5. listenPort是代理后本地监听端口
 6. logLevel是日志level 默认info
 
