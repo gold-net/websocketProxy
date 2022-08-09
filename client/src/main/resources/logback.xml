@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <contextName>logback</contextName>
+
+    <!--<property name="CONSOLE_LOG_PATTERN" value="%cyan(%d{yyyy-MM-dd HH:mm:ss}) %green([%t]) %highlight(%-5level) %boldMagenta(%logger{30}.%method,%L) : %msg%n"/>-->
+    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{30}.%method,%L : %msg%n"/>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <encoder>
+            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
+            <!-- 设置字符集 -->
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--默认环境:打印控制台-->
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEMP File</title>
+    <style>
+        thead {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div style="height:100%; width:100%; text-align: center;">
+    <div style="text-align: left;margin:auto; width: 600px;">
+        <H2>File upload</H2>
+        <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+            <input type="file" name="file" multiple>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <div style="text-align: left;margin:auto; width: 600px;">
+        <h2>File index</h2>
+        <table>
+            <thead>
+            <tr style="font-weight: bold;">
+                <td style="width: 300px;">Name</td>
+                <td>Operation</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item:${files}">
+                <td>
+                    <a th:href="@{/download(file=${item})}" th:text="${item}" title="click to download"
+                       target="_blank"></a>
+                </td>
+                <td><a th:href="@{/delete(file=${item})}">delete</a></td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+</body>
+</html>
