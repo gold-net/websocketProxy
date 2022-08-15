@@ -13,7 +13,7 @@
 <div style="height:100%; width:100%; text-align: center;">
     <div style="text-align: left;margin:auto; width: 600px;">
         <H2>File upload</H2>
-        <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+        <form method="post" th:action="@{{basePath}/upload(basePath=${basePath})}" enctype="multipart/form-data">
             <input type="file" name="file" multiple>
             <button type="submit">submit</button>
         </form>
@@ -30,10 +30,11 @@
             <tbody>
             <tr th:each="item:${files}">
                 <td>
-                    <a th:href="@{/download(file=${item})}" th:text="${item}" title="click to download"
+                    <a th:href="@{{basePath}/download(file=${item},basePath=${basePath})}" th:text="${item}"
+                       title="click to download"
                        target="_blank"></a>
                 </td>
-                <td><a th:href="@{/delete(file=${item})}">delete</a></td>
+                <td><a th:href="@{{basePath}/delete(file=${item},basePath=${basePath})}">delete</a></td>
             </tr>
             </tbody>
 
